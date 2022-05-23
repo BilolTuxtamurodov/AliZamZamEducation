@@ -11,6 +11,7 @@ import com.company.AliZamZamEducation.repository.ProfileRepository;
 import com.company.AliZamZamEducation.utils.InlineButtonUtil;
 import com.company.AliZamZamEducation.utils.KeyboardButtonUtil;
 import com.company.AliZamZamEducation.utils.KeyboardButtonUtilRu;
+import com.company.AliZamZamEducation.words.Words;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.telegram.telegrambots.meta.api.methods.send.SendDocument;
@@ -61,7 +62,7 @@ public class MainControllerRu {
             myTelegramBot.send(sendMessage);
         } else if (text.equals("\uD83E\uDD35\uD83E\uDD35\uD83C\uDFFB\u200D♀️  Пользователи Exel")){
             List<ProfileEntity> user_dtos = profileRepository.findAll();
-            mainController.writeToExel(user_dtos);
+            Words.writeToExel(user_dtos);
             InputFile inputFile = new InputFile(new File("univer.xlsx"));
             sendMessage.setText("Exel File");
             SendDocument sendDocument = new SendDocument();
